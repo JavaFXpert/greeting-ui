@@ -1,10 +1,12 @@
 ---
 applications:
 - name: greeting-ui
-  random-route: true
-  path:  ./target/greeting-ui-0.0.1-SNAPSHOT.jar
+  timeout: 120
   services:
   - config-server
   - cloud-bus
   - service-registry
   - circuit-breaker-dashboard
+  env:
+    JAVA_OPTS: -Djava.security.egd=file:///dev/urandom
+    TRUST_CERTS: api.run.pivotal.io
